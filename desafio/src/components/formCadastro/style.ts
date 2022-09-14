@@ -128,4 +128,11 @@ export const Formulario = styled.form`
       }
     }
   }
+
+  .error {
+    color: red;
+    font-size: 10px;
+    position: relative;
+    margin-left: 10px;
+  }
 `;

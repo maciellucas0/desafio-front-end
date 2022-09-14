@@ -104,4 +104,9 @@ export const Formulario = styled.form`
       }
     }
   }
+
+  .error {
+    color: red;
+    margin-left: 10px;
+  }
 `;

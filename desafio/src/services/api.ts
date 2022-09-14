@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://api-dev.blox.education/",
+  baseURL: "https://api-dev.blox.education",
 });
