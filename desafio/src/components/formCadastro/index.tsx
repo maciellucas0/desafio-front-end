@@ -1,7 +1,7 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { BsFillEyeSlashFill, BsMinecart } from "react-icons/bs";
+import { BsFillEyeSlashFill } from "react-icons/bs";
 import { RiFileList2Fill } from "react-icons/ri";
 import { Formulario } from "./style";
 
@@ -15,7 +15,11 @@ const FormCadastro = () => {
 
   const formSchema = yup.object().shape({
     nome: yup.string().required("Nome obrigatório"),
-    cpf: yup.string().required("CPF obrigatório").min(11).max(11),
+    cpf: yup
+      .string()
+      .required("CPF obrigatório")
+      .min(11, "Minimo 11 números")
+      .max(11, "Máximo 11 números"),
     nascimento: yup.string().required("Data de nascimento obrigatória"),
     email: yup.string().required("email obrigatório").email(),
     senha: yup.string().required("Senha obrigatória"),
@@ -25,7 +29,11 @@ const FormCadastro = () => {
     checkbox: yup.boolean().notRequired(),
   });
 
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(formSchema),
   });
 
@@ -44,20 +52,32 @@ const FormCadastro = () => {
         <h1>Quero me cadastrar</h1>
 
         <input type="text" placeholder="Nome" {...register("nome")} />
+        <span className="error">
+          {errors.nome?.message as unknown as string}
+        </span>
+
         <div className="row">
           <input type="number" placeholder="CPF" {...register("cpf")} />
+          <span className="error">
+            {errors.cpf?.message as unknown as string}
+          </span>
           <fieldset>
             <legend>Data de nascimento</legend>
             <input type="date" id="noBorder" {...register("nascimento")} />
+            <span className="error">
+              {errors.nascimento?.message as unknown as string}
+            </span>
           </fieldset>
         </div>
         <input type="email" placeholder="E-mail" {...register("email")} />
+
         <div className="senha">
           <input
             type={senhaPrimaria}
             placeholder="Crie sua senha"
             {...register("senha")}
           />
+
           <button type="button" onClick={() => VerSenhaPrimaria()}>
             <BsFillEyeSlashFill />
           </button>
@@ -68,6 +88,7 @@ const FormCadastro = () => {
             placeholder="Confirme sua senha"
             {...register("confirmarSenha")}
           />
+
           <button onClick={() => VerSenhaSecundaria()} type="button">
             <BsFillEyeSlashFill />
           </button>
@@ -85,6 +106,17 @@ const FormCadastro = () => {
           <RiFileList2Fill />
           CADASTRAR
         </button>
+        <div>
+          <span className="error">
+            {errors.confirmarSenha?.message as unknown as string}
+          </span>
+          <span className="error">
+            {errors.senha?.message as unknown as string}
+          </span>
+          <span className="error">
+            {errors.email?.message as unknown as string}
+          </span>
+        </div>
       </Formulario>
     </>
   );
