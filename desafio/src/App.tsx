@@ -1,10 +1,10 @@
 import React from "react";
-import PaginaCadastro from "./pages/paginaCadastro";
+import FormLogin from "./contexts/FormLogin";
 
 function App() {
   return (
     <>
-      <PaginaCadastro />
+      <FormLogin />
     </>
   );
 }
