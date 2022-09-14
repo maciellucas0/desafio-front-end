@@ -91,7 +91,8 @@ export const Formulario = styled.form`
     button {
       position: absolute;
       right: 10%;
-      top: 16.5px;
+      top: 40%;
+      font-size: 20px;
 
       cursor: pointer;
       color: #757575;

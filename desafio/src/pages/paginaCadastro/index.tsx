@@ -1,4 +1,4 @@
-import FormCadastro from "../../contexts/formCadastro";
+import FormCadastro from "../../components/formCadastro";
 
 const PaginaCadastro = () => {
   return (

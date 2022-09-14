@@ -1,10 +1,10 @@
 import React from "react";
-import FormLogin from "./contexts/FormLogin";
+import RoutesMain from "./routes";
 
 function App() {
   return (
     <>
-      <FormLogin />
+      <RoutesMain />
     </>
   );
 }
