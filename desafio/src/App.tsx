@@ -1,7 +1,12 @@
 import React from "react";
+import PaginaCadastro from "./pages/paginaCadastro";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <>
+      <PaginaCadastro />
+    </>
+  );
 }
 
 export default App;
