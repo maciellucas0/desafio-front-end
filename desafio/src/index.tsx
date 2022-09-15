@@ -5,6 +5,7 @@ import App from "./App";
 import { ContexProvider } from "./contexts/contextCadastro";
 import { ContextLoginProvider } from "./contexts/contextLogin";
 import { Toaster } from "react-hot-toast";
+import { ContextHomeProvider } from "./contexts/contextHome";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -14,7 +15,9 @@ root.render(
       <ContexProvider>
         <ContextLoginProvider>
           <Toaster />
-          <App />
+          <ContextHomeProvider>
+            <App />
+          </ContextHomeProvider>
         </ContextLoginProvider>
       </ContexProvider>
     </BrowserRouter>
