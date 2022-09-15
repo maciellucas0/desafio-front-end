@@ -1,14 +1,18 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { api } from "../services/api";
 
 interface Context {
   dados: any;
 }
 
+interface childrenProps {
+  children: ReactNode;
+}
+
 export const ContextHome = createContext({} as Context);
 
-export const ContextHomeProvider = ({ children }: any) => {
-  const [dados, setDados] = useState({});
+export const ContextHomeProvider = ({ children }: childrenProps) => {
+  const [dados, setDados] = useState([]);
   useEffect(() => {
     api
       .get("/v1/public/institutions/22/blox_offerings?page=1&per=5", {

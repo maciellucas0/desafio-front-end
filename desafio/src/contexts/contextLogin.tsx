@@ -1,8 +1,9 @@
-import { createContext } from "react";
+import { createContext, ReactNode } from "react";
 import { useState } from "react";
 import { api } from "../services/api";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+
 interface Context {
   verSenha: string;
   VerSenha: () => void;
@@ -13,9 +14,12 @@ interface Dados {
   name: string;
   password: string;
 }
+interface childrenProps {
+  children: ReactNode;
+}
 
 export const ContextLogin = createContext({} as Context);
-export const ContextLoginProvider = ({ children }: any) => {
+export const ContextLoginProvider = ({ children }: childrenProps) => {
   const navigate = useNavigate();
   const [verSenha, setVerSenha] = useState("password");
 
