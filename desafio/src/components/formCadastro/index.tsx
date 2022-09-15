@@ -14,19 +14,19 @@ const FormCadastro = () => {
   const navigate = useNavigate();
 
   const formSchema = yup.object().shape({
-    nome: yup.string().required("Nome obrigatório"),
+    name: yup.string().required("Nome obrigatório"),
     cpf: yup
       .string()
       .required("CPF obrigatório")
       .min(11, "Minimo 11 números")
       .max(11, "Máximo 11 números"),
-    nascimento: yup.string().required("Data de nascimento obrigatória"),
+    birth_date: yup.string().required("Data de nascimento obrigatória"),
     email: yup.string().required("email obrigatório").email(),
-    senha: yup.string().required("Senha obrigatória"),
-    confirmarSenha: yup
+    password: yup.string().required("Senha obrigatória"),
+    password_confirmation: yup
       .string()
-      .oneOf([yup.ref("senha"), null], "As senhas precisam ser iguais."),
-    checkbox: yup.boolean().notRequired(),
+      .oneOf([yup.ref("password"), null], "As senhas precisam ser iguais."),
+    allow_emails: yup.boolean().notRequired(),
   });
 
   const {
@@ -39,7 +39,7 @@ const FormCadastro = () => {
 
   /*------CONTEXTO--------*/
   const {
-    onSubmit,
+    cadastrar,
     senhaPrimaria,
     senhaSecundaria,
     VerSenhaPrimaria,
@@ -48,24 +48,28 @@ const FormCadastro = () => {
 
   return (
     <>
-      <Formulario onSubmit={handleSubmit(onSubmit)}>
+      <Formulario onSubmit={handleSubmit(cadastrar)}>
         <h1>Quero me cadastrar</h1>
 
-        <input type="text" placeholder="Nome" {...register("nome")} />
+        <input type="text" placeholder="Nome" {...register("name")} />
         <span className="error">
-          {errors.nome?.message as unknown as string}
+          {errors.name?.message as unknown as string}
         </span>
 
         <div className="row">
-          <input type="number" placeholder="CPF" {...register("cpf")} />
+          <input
+            type="number"
+            placeholder="CPF Somente números"
+            {...register("cpf")}
+          />
           <span className="error">
             {errors.cpf?.message as unknown as string}
           </span>
           <fieldset>
             <legend>Data de nascimento</legend>
-            <input type="date" id="noBorder" {...register("nascimento")} />
+            <input type="date" id="noBorder" {...register("birth_date")} />
             <span className="error">
-              {errors.nascimento?.message as unknown as string}
+              {errors.birth_date?.message as unknown as string}
             </span>
           </fieldset>
         </div>
@@ -75,7 +79,7 @@ const FormCadastro = () => {
           <input
             type={senhaPrimaria}
             placeholder="Crie sua senha"
-            {...register("senha")}
+            {...register("password")}
           />
 
           <button type="button" onClick={() => VerSenhaPrimaria()}>
@@ -86,7 +90,7 @@ const FormCadastro = () => {
           <input
             type={senhaSecundaria}
             placeholder="Confirme sua senha"
-            {...register("confirmarSenha")}
+            {...register("password_confirmation")}
           />
 
           <button onClick={() => VerSenhaSecundaria()} type="button">
@@ -97,7 +101,7 @@ const FormCadastro = () => {
           <input
             type="checkbox"
             id="checkbox"
-            {...register("checkbox")}
+            {...register("allow_emails")}
           ></input>
           <span>Voce aceita receber comunicações por e-mail?</span>
         </div>
@@ -108,10 +112,10 @@ const FormCadastro = () => {
         </button>
         <div>
           <span className="error">
-            {errors.confirmarSenha?.message as unknown as string}
+            {errors.password_confirmation?.message as unknown as string}
           </span>
           <span className="error">
-            {errors.senha?.message as unknown as string}
+            {errors.password?.message as unknown as string}
           </span>
           <span className="error">
             {errors.email?.message as unknown as string}
