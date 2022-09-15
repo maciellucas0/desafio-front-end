@@ -4,26 +4,38 @@ import { useContext } from "react";
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
-import { StyledContainer } from "./style";
+import {
+  DivCentral,
+  DivHexagono,
+  DivInferior,
+  DivSuperior,
+  StyledContainer,
+} from "./style";
 import { ContextHome } from "../../contexts/contextHome";
 
-function stringAvatar(name: string) {
-  return {
-    sx: {
-      bgcolor: "red",
-    },
-    children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
-  };
+interface Props {
+  index: number;
 }
-
-export const Card = () => {
+export const Card = ({ index }: Props) => {
   const { dados } = useContext(ContextHome);
+  console.log(dados[index].cached_blox.knowledge_area.color2);
+  console.log(dados[index].cached_blox.knowledge_area.color1);
+  function stringAvatar(name: string) {
+    return {
+      sx: {
+        bgcolor: dados[index].cached_blox.knowledge_area.color1,
+      },
+      children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
+    };
+  }
 
-  console.log(dados);
   return (
     <>
       <StyledContainer>
-        <div className="superior">
+        <DivSuperior
+          color={`${dados[index].cached_blox.knowledge_area.color2}`}
+          className="superior"
+        >
           <div>
             <p>Data limite</p>
           </div>
@@ -35,29 +47,43 @@ export const Card = () => {
               <AiOutlineMore size={20} />
             </button>
           </div>
-        </div>
-        <div className="center">
-          <div id="hexagono">
-            <img src="" alt="Blox imagem" />
-          </div>
-          <p id="titulo">{}</p>
+        </DivSuperior>
+        <DivCentral
+          color={`${dados[index].cached_blox.knowledge_area.color1}`}
+          className="center"
+        >
+          <DivHexagono
+            color={`${dados[index].cached_blox.knowledge_area.color2}`}
+            id="hexagono"
+          >
+            <img
+              src={dados[index].cached_blox.functional_area.icon_white_url}
+              alt="Blox imagem"
+            />
+          </DivHexagono>
+          <p id="titulo">{dados[index].title}</p>
 
           <div className="modalidade">
             <div className="column">
               <p>ID</p>
-              <span>numero do id</span>
+              <span>{dados[index].id}</span>
             </div>
             <div className="column">
               <p>Modalidade</p>
-              <span>nossa modalidade</span>
+              <span>{dados[index].modality}</span>
             </div>
           </div>
-        </div>
-        <div className="inferior">
+        </DivCentral>
+        <DivInferior
+          color={`${dados[index].cached_blox.knowledge_area.color2}`}
+          className="inferior"
+        >
           <Stack direction="row" spacing={2}>
-            <Avatar {...stringAvatar("Kent Dodds")} />
+            <Avatar
+              {...stringAvatar(dados[index].cached_blox.responsible.name)}
+            />
           </Stack>
-        </div>
+        </DivInferior>
       </StyledContainer>
     </>
   );

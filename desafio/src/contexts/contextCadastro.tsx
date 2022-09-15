@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, ReactNode } from "react";
 import { useState } from "react";
 import { api } from "../services/api";
 import toast from "react-hot-toast";
@@ -22,9 +22,13 @@ interface Context {
   VerSenhaSecundaria: () => void;
 }
 
+interface childrenProps {
+  children: ReactNode;
+}
+
 export const ContextCadastro = createContext({} as Context);
 
-export const ContexProvider = ({ children }: any) => {
+export const ContexProvider = ({ children }: childrenProps) => {
   const [senhaPrimaria, setSenhaPrimaria] = useState("password");
   const [senhaSecundaria, setSenhaSecundaria] = useState("password");
   const navigate = useNavigate();

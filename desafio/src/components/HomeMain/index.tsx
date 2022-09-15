@@ -6,18 +6,20 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { StyledSection } from "./style";
 import { Card } from "../card";
+import { ContextHome } from "../../contexts/contextHome";
 
 export const HomeMain = () => {
   const [view, setView] = React.useState("list");
+
+  const { dados } = React.useContext(ContextHome);
 
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
     nextView: string
   ) => {
     setView(nextView);
-    console.log(view);
   };
-
+  console.log(dados);
   return (
     <>
       <StyledSection>
@@ -40,7 +42,13 @@ export const HomeMain = () => {
         </ToggleButtonGroup>
       </StyledSection>
       <main>
-        <Card />
+        <ul>
+          {dados.map((item: any, index: any) => (
+            <li key={index}>
+              <Card index={index} />
+            </li>
+          ))}
+        </ul>
       </main>
     </>
   );

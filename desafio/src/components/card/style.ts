@@ -13,7 +13,7 @@ export const StyledContainer = styled.main`
   }
   .superior {
     width: 100%;
-    background-color: green;
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -27,12 +27,13 @@ export const StyledContainer = styled.main`
       background-color: transparent;
       border: none;
       cursor: pointer;
+      color: white;
     }
   }
 
   .center {
     width: 100%;
-    background-color: blue;
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -42,39 +43,9 @@ export const StyledContainer = styled.main`
     padding: 5px;
 
     #titulo {
-      margin-left: 20px;
-    }
-
-    #hexagono {
-      width: 50px;
-      height: 27.5px;
-      background: red;
-      position: relative;
-      margin-top: 1rem;
-      margin-bottom: 2rem;
-    }
-    #hexagono:before {
-      content: "";
-      position: absolute;
-
-      top: -12.5px;
-      left: 0;
-      width: 0;
-      height: 0;
-      border-left: 25px solid transparent;
-      border-right: 25px solid transparent;
-      border-bottom: 12.5px solid red;
-    }
-    #hexagono:after {
-      content: "";
-      position: absolute;
-      bottom: -12.5px;
-      left: 0;
-      width: 0;
-      height: 0;
-      border-left: 25px solid transparent;
-      border-right: 25px solid transparent;
-      border-top: 12.5px solid red;
+      max-width: 280px;
+      font-size: 18px;
+      margin-left: 30px;
     }
 
     .modalidade {
@@ -96,7 +67,7 @@ export const StyledContainer = styled.main`
   .inferior {
     width: 100%;
     height: 50px;
-    background-color: green;
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -104,5 +75,32 @@ export const StyledContainer = styled.main`
     height: 50px;
     padding: 5px;
     border-radius: 0 0 10px 10px;
+  }
+`;
+
+export const DivSuperior = styled.div`
+  background-color: ${(props) => props.color};
+`;
+
+export const DivCentral = styled.div`
+  background-color: ${(props) => props.color};
+`;
+
+export const DivInferior = styled.div`
+  background-color: ${(props) => props.color};
+`;
+
+export const DivHexagono = styled.div`
+  background-color: ${(props) => props.color};
+
+  width: 50px;
+  height: 50px;
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+
+  img {
+    width: 100%;
+    height: 100%;
   }
 `;
