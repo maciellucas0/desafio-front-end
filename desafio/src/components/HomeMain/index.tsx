@@ -4,9 +4,10 @@ import ViewModuleIcon from "@mui/icons-material/ViewModule";
 import ViewQuiltIcon from "@mui/icons-material/ViewQuilt";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import { StyledSection } from "./style";
+import { StyledSection, StyledUl } from "./style";
 import { Card } from "../card";
 import { ContextHome } from "../../contexts/contextHome";
+import { HomeInferior } from "../HomeInferior";
 
 export const HomeMain = () => {
   const [view, setView] = React.useState("list");
@@ -19,7 +20,7 @@ export const HomeMain = () => {
   ) => {
     setView(nextView);
   };
-  console.log(dados);
+  console.log(view);
   return (
     <>
       <StyledSection>
@@ -30,26 +31,27 @@ export const HomeMain = () => {
           exclusive
           onChange={handleChange}
         >
-          <ToggleButton value="quilt" aria-label="list">
+          <ToggleButton value="column" aria-label="colum">
             <ViewListIcon />
           </ToggleButton>
-          <ToggleButton value="module" aria-label="module">
+          <ToggleButton value="row" aria-label="row">
             <ViewModuleIcon />
           </ToggleButton>
-          <ToggleButton value="list" aria-label="quilt">
+          <ToggleButton value="row-reverse" aria-label="row-reverse">
             <ViewQuiltIcon />
           </ToggleButton>
         </ToggleButtonGroup>
       </StyledSection>
       <main>
-        <ul>
+        <StyledUl color={`${view}`}>
           {dados.map((item: any, index: any) => (
             <li key={index}>
               <Card index={index} />
             </li>
           ))}
-        </ul>
+        </StyledUl>
       </main>
+      <HomeInferior />
     </>
   );
 };

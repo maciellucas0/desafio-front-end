@@ -18,8 +18,7 @@ interface Props {
 }
 export const Card = ({ index }: Props) => {
   const { dados } = useContext(ContextHome);
-  console.log(dados[index].cached_blox.knowledge_area.color2);
-  console.log(dados[index].cached_blox.knowledge_area.color1);
+
   function stringAvatar(name: string) {
     return {
       sx: {
