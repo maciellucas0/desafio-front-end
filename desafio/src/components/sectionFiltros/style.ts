@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledSection = styled.section`
   width: 100vw;
-  margin-top: 2rem;
+  margin-top: 10px;
 
   h1 {
     font-family: "Roboto", sans-serif;

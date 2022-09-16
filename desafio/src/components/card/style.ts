@@ -76,6 +76,10 @@ export const StyledContainer = styled.main`
     padding: 5px;
     border-radius: 0 0 10px 10px;
   }
+
+  @media (max-width: 380px) {
+    max-width: 80%;
+  }
 `;
 
 export const DivSuperior = styled.div`

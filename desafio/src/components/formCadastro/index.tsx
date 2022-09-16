@@ -5,14 +5,11 @@ import { BsFillEyeSlashFill } from "react-icons/bs";
 import { RiFileList2Fill } from "react-icons/ri";
 import { Formulario } from "./style";
 
-import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ContextCadastro } from "../../contexts/contextCadastro";
 import { useContext } from "react";
 
 const FormCadastro = () => {
-  const navigate = useNavigate();
-
   const formSchema = yup.object().shape({
     name: yup.string().required("Nome obrigatório"),
     cpf: yup
@@ -37,7 +34,6 @@ const FormCadastro = () => {
     resolver: yupResolver(formSchema),
   });
 
-  /*------CONTEXTO--------*/
   const {
     cadastrar,
     senhaPrimaria,
