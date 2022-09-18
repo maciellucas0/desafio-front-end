@@ -25,6 +25,8 @@ O projeto conta com uma tela de cadastro , com o usuário podendo se cadastrar e
 
 A homePage é uma tela onde é feita a requisição na Api disponibilizada para a renderização de algumas informações como id título e algumas outras informações para renderização dos cards.
 
+Este projeto está disponível no site : https://desafio-front-end-ashy.vercel.app/cadastro
+
 NESSE PROJETO NÃO ESTÁ FUNCIONANDO O FILTRO.
 
 
