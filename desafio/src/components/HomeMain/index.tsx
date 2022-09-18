@@ -20,7 +20,7 @@ export const HomeMain = () => {
   ) => {
     setView(nextView);
   };
-  console.log(view);
+
   return (
     <>
       <StyledSection>
